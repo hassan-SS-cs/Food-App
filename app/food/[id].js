@@ -1,0 +1,102 @@
+import { StyleSheet, Text, View,Image } from 'react-native'
+import React from 'react'
+import { useLocalSearchParams, useRouter } from 'expo-router'
+import ThemedCard from '../../components/ThemedCard'
+const FoodDetails = () => {
+  const {image}= useLocalSearchParams();
+  const {title}= useLocalSearchParams();
+  const {Description}= useLocalSearchParams();
+  const {rating}= useLocalSearchParams();
+  return (
+    <View>
+      <View style={styles.imageContainer}>
+<Image 
+      style={{width:200,height:200}}
+      source={image}
+      />
+         </View>
+
+
+      <View style={styles.titleContainer}>
+ <Text 
+ style={styles.title}>{title}
+ </Text>
+      </View>
+
+<View style={styles.cardBottomContainer}>
+    <View style={styles.cardRatingContainer}>
+        <Text style={styles.cardStar}>★</Text>
+        <Text style={styles.cardRating}>{rating}</Text>
+    </View>
+</View>
+
+     <View style={styles.descriptionContainer}>
+<Text 
+style={styles.description}>{Description}
+</Text>
+     </View>
+
+      
+      
+      
+    </View>
+  )
+}
+
+export default FoodDetails
+
+const styles = StyleSheet.create({
+  imageContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 300,
+  },
+
+  titleContainer: {
+    justifyContent: 'center',
+    marginTop: 100,
+    marginLeft: 10,
+  },
+
+  descriptionContainer: {
+    marginHorizontal: 20,
+    marginVertical: 10,
+  },
+  ratingContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'left',
+  },
+
+cardBottomContainer: {
+    textAlign: 'left',
+        marginLeft: 6,
+
+    },
+
+cardRatingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
+cardStar: {
+    fontSize: 30,
+    color: '#ff0000',
+  },
+cardRating: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+
+  description: {
+    fontSize: 16,
+    textAlign: 'justify',
+  },
+
+
+})

@@ -1,34 +1,42 @@
 import { StyleSheet, Text, TouchableOpacity, View,Image } from 'react-native'
 import React, { use, useState } from 'react'
+import { router } from 'expo-router'
 
-const ThemedCard = ({style,...props}) => {
+const ThemedCard = ({style,id,...props}) => {
     const [image,setImage]=useState(props.image)
     const [title,setTitle]=useState(props.title)
     const [Description,setDescription]=useState(props.Description)
     const [rating,setRating]=useState(props.rating)
     const [isFavorite,setIsFavorite]=useState(false)
   return (
-    <TouchableOpacity>
-      <TouchableOpacity style={styles.card}>
-<Image source={image} style={{width: '100%', height: 120, borderRadius: 8}} />
-<Text style={{fontSize: 16, fontWeight: 'bold', marginTop: 10}}>{title}</Text>
-<Text style={{fontSize: 14, color: '#888', marginTop: 5}}>{Description}</Text>
+      <TouchableOpacity style={styles.card} onPress={() => {router.push({
+pathname:'/food/[id].js',
+params:{image: image,title:title,Description:Description,rating:rating}
+      })}}>
+<Image 
+style={styles.cardImage} 
+source={image}
+/>
 
+<Text style={styles.cardTitle}>
+    {title}
+    </Text>
+
+<Text style={styles.cardDescription}>
+    {Description}
+    </Text>
+
+<View style={styles.cardBottomContainer}>
+    <View style={styles.cardRatingContainer}>
+        <Text style={styles.cardStar}>★</Text>
+        <Text style={styles.cardRating}>{rating}</Text>
+    </View>
 <TouchableOpacity onPress={() => setIsFavorite(!isFavorite)}>
  <Text style={styles.cardHeart}>{isFavorite ? '♥' : '♡'}</Text> 
 </TouchableOpacity>
+</View>
+</TouchableOpacity >
 
-<TouchableOpacity >
-<Text style={styles.cardStar}>★</Text> 
-</TouchableOpacity>
-<Text style={styles.cardRating}>{rating}</Text>
-
-
-      </TouchableOpacity>
-
-
-
-      </TouchableOpacity>
   )
 }
 
@@ -37,44 +45,56 @@ export default ThemedCard
 const styles = StyleSheet.create({
 
 card:{
-padding: 24,
-backgroundColor: '#f0eded',
-borderRadius: 8,
-marginTop: 60,
-width: '45%',
-height: 250,
-marginLeft: 20,
+backgroundColor: '#ffffff',
+borderRadius: 10,
 elevation: 4,
-
-}
-,
+padding: 10,
+flexDirection: 'column',
+maxHeight: 220,
+gap: 2,
+},
+cardImage:{
+    aspectRatio: 1,
+    borderRadius: 8,
+    maxHeight: 100,
+    alignSelf: 'center',
+},
+cardTitle:{
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginTop: 6,
+    textAlign: 'left',
+},
+cardDescription:{
+    fontSize: 11,
+    color: '#373737',
+    marginTop: 4,
+    textAlign: 'left',
+},
 cardHeart:{
     fontSize: 30,
-    alignSelf: 'flex-end',
     color: '#ff0000',
-    position: 'absolute'
-},
-cardContainer:{
-   // flexDirection: 'row',
-
 },
 cardStar:{
-    fontSize: 30,
+    fontSize: 30, 
     color: '#ffcc00',
-
+    marginBottom: 3,
 },
-
 cardRating:{
     fontSize: 14,
     color: '#000000',
-    position: 'absolute',
-marginTop: 214,
-marginLeft: 55,
-
-
-
-
-}
+},
+cardRatingContainer:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+},
+cardBottomContainer:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+},
 
 
 })

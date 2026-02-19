@@ -13,13 +13,13 @@ export default ThemedButtonFilter
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: '#ff0000',
+        backgroundColor: '#EF2A39',
         paddingVertical: 10,    
         borderRadius: 25,
         marginTop: 42,
         width: '15%',
         height: 60,
-        elevation: 14,
+        elevation: 6,
     },
 buttonText:{
     color: '#ffffff',
