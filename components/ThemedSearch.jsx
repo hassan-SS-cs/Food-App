@@ -1,35 +1,35 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
-import React from 'react'
+// import { StyleSheet, Text, TextInput, View } from 'react-native'
+// import React from 'react'
 
-const ThemedSearch = ({style,...props}) => {
-  return (
+// const ThemedSearch = ({style,...props}) => {
+//   return (
     
-    <View>
+//     <View>
 
-<TextInput style={[style,
-{
-    backgroundColor: '#edecec',
-    borderRadius: 8,
-    padding: 12,
-    margin: 10,
-width: '170%',
-fontWeight:`bold`,
-}
+// <TextInput style={[style,
+// {
+//     backgroundColor: '#edecec',
+//     borderRadius: 8,
+//     padding: 12,
+//     margin: 10,
+// width: '170%',
+// fontWeight:`bold`,
+// }
     
-]}
-placeholder='🔍    Search for food'
-{...props}
-/>
+// ]}
+// placeholder='🔍    Search for food'
+// {...props}
+// />
 
 
-    </View>
-  )
-}
+//     </View>
+//   )
+// }
 
-export default ThemedSearch
+// export default ThemedSearch
 
-const styles = StyleSheet.create({
+// const styles = StyleSheet.create({
 
 
 
-})
+// })

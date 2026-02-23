@@ -15,7 +15,6 @@ import ThemedCard from "../components/ThemedCard";
 
 //images
 import food1 from "../assets/food/food1.png";
-import PriceButton from "../components/PriceButton";
 const Home = () => {
   const theme = useTheme({ colors: { onSurface: "#000000" } });
   const [searchQuery, setSearchQuery] = React.useState("");
