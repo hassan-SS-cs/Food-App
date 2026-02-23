@@ -2,12 +2,16 @@ import { StyleSheet, Text, View,Image } from 'react-native'
 import React from 'react'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import ThemedCard from '../../components/ThemedCard'
+import OrderButton from '../../components/orderButton'
+
 const FoodDetails = () => {
   const {image}= useLocalSearchParams();
   const {title}= useLocalSearchParams();
   const {Description}= useLocalSearchParams();
   const {rating}= useLocalSearchParams();
+  const {price}= useLocalSearchParams();
   return (
+    
     <View>
       <View style={styles.imageContainer}>
 <Image 
@@ -36,7 +40,13 @@ style={styles.description}>{Description}
 </Text>
      </View>
 
-      
+      <View style={styles.BottomButtonContainer}>
+       <View style={styles.priceButton}>
+    <Text style={styles.priceButtonText}>${price}</Text>
+
+       </View>
+        <OrderButton/>
+      </View>
       
       
     </View>
@@ -97,6 +107,23 @@ cardRating: {
     fontSize: 16,
     textAlign: 'justify',
   },
-
+  BottomButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+   priceButton: {
+    backgroundColor: '#ff0000',
+    padding: 10,
+    borderRadius: 25,
+    height: 50,
+     width: 150,
+        alignItems: 'center',
+        marginTop: 132,
+  },
+   priceButtonText: {
+    color: '#ffffff',
+     fontSize: 16,
+    fontWeight: 'bold',
+  },
 
 })

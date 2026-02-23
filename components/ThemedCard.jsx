@@ -3,16 +3,20 @@ import React, { use, useState } from 'react'
 import { router } from 'expo-router'
 
 const ThemedCard = ({style,id,...props}) => {
-    const [image,setImage]=useState(props.image)
-    const [title,setTitle]=useState(props.title)
-    const [Description,setDescription]=useState(props.Description)
-    const [rating,setRating]=useState(props.rating)
+    const [image]=useState(props.image)
+    const [title]=useState(props.title)
+    const [Description]=useState(props.Description)
+    const [rating]=useState(props.rating)
+    const [price]=useState(props.price)
     const [isFavorite,setIsFavorite]=useState(false)
+    
   return (
+
       <TouchableOpacity style={styles.card} onPress={() => {router.push({
 pathname:'/food/[id].js',
-params:{image: image,title:title,Description:Description,rating:rating}
+params:{image: image,title:title,Description:Description,rating:rating,price:price}
       })}}>
+        
 <Image 
 style={styles.cardImage} 
 source={image}
@@ -30,6 +34,7 @@ source={image}
     <View style={styles.cardRatingContainer}>
         <Text style={styles.cardStar}>★</Text>
         <Text style={styles.cardRating}>{rating}</Text>
+        <Text style={styles.cardPrice}>${price}</Text>
     </View>
 <TouchableOpacity onPress={() => setIsFavorite(!isFavorite)}>
  <Text style={styles.cardHeart}>{isFavorite ? '♥' : '♡'}</Text> 
