@@ -13,7 +13,7 @@ export default orderButton
 
 const styles = StyleSheet.create({
     orderButton: {
-        backgroundColor: '#6e2e23',
+        backgroundColor: '#ff2600',
         paddingVertical: 15,
         borderRadius: 20,
         alignItems: 'center',
